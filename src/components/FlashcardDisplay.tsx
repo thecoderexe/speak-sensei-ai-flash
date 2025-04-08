@@ -14,7 +14,7 @@ const FlashcardDisplay: React.FC<FlashcardDisplayProps> = ({
 }) => {
   return (
     <Card className="flashcard animate-fade-in">
-      <div className="text-center p-6 md:p-8">
+      <div className="flex flex-col items-center justify-center h-full text-center p-6 md:p-8">
         <h3 className="text-2xl md:text-4xl font-medium mb-6 text-gray-100">
           {flashcard.text}
         </h3>

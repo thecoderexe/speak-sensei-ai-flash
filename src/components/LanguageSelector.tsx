@@ -27,19 +27,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       >
         <SelectTrigger className="w-full md:w-[240px] border border-gray-800 bg-gray-900/80">
           <SelectValue placeholder="Select a language">
-            <div className="flex items-center">
-              <span className="mr-2 text-xl">{selectedLanguage.flag}</span>
-              <span>{selectedLanguage.name}</span>
-            </div>
+            <span>{selectedLanguage.name}</span>
           </SelectValue>
         </SelectTrigger>
         <SelectContent className="bg-gray-900 border border-gray-800">
           {languages.map((language) => (
             <SelectItem key={language.code} value={language.code} className="hover:bg-gray-800">
-              <div className="flex items-center">
-                <span className="mr-2 text-xl">{language.flag}</span>
-                <span>{language.name}</span>
-              </div>
+              <span>{language.name}</span>
             </SelectItem>
           ))}
         </SelectContent>
