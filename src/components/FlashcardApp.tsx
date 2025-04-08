@@ -145,15 +145,6 @@ const FlashcardApp: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
-      <header className="mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
-          Speak Sensei
-        </h1>
-        <p className="text-center text-gray-600 mt-2">
-          Practice your pronunciation with AI feedback
-        </p>
-      </header>
-      
       <div className="flex justify-center mb-12">
         <LanguageSelector 
           selectedLanguage={selectedLanguage}
@@ -173,7 +164,7 @@ const FlashcardApp: React.FC = () => {
               <Button
                 variant="ghost"
                 onClick={toggleTranslation}
-                className="text-sm text-gray-500 hover:text-gray-900"
+                className="text-sm text-gray-400 hover:text-gray-200"
               >
                 {showTranslation ? "Hide translation" : "Show translation"}
               </Button>
@@ -187,7 +178,7 @@ const FlashcardApp: React.FC = () => {
               onClick={handleRecordButtonClick}
               disabled={!currentFlashcard}
             />
-            <p className="text-sm text-gray-500 mt-3">
+            <p className="text-sm text-gray-400 mt-3">
               {isRecording ? "Stop recording" : "Click to speak"}
             </p>
           </div>
@@ -201,7 +192,7 @@ const FlashcardApp: React.FC = () => {
           <div className="flex justify-center mt-12">
             <Button
               onClick={handleNextFlashcard}
-              className="bg-gray-900 hover:bg-black transition-colors flex items-center gap-2 px-8 py-6 rounded-full text-md"
+              className="bg-gray-800 hover:bg-gray-700 transition-colors flex items-center gap-2 px-8 py-6 rounded-full text-md"
             >
               Next <ArrowRight className="w-4 h-4" />
             </Button>

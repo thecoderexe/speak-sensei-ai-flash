@@ -13,13 +13,13 @@ const FlashcardDisplay: React.FC<FlashcardDisplayProps> = ({
   showTranslation,
 }) => {
   return (
-    <Card className="flashcard bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
-      <div className="text-center p-8">
-        <h3 className="text-2xl md:text-4xl font-medium mb-6 text-gray-800">
+    <Card className="flashcard">
+      <div className="text-center p-6 md:p-8">
+        <h3 className="text-2xl md:text-4xl font-medium mb-6 text-gray-100">
           {flashcard.text}
         </h3>
         {showTranslation && flashcard.translation && (
-          <p className="text-gray-500 text-base md:text-lg italic mt-4">
+          <p className="text-gray-400 text-base md:text-lg italic mt-4">
             {flashcard.translation}
           </p>
         )}

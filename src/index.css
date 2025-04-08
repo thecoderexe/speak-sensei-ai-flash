@@ -97,7 +97,7 @@
 
 @layer components {
   .rating-bar {
-    @apply h-2 rounded-full overflow-hidden relative bg-gray-200;
+    @apply h-2 rounded-full overflow-hidden relative bg-gray-800;
   }
   
   .rating-fill {
@@ -111,7 +111,7 @@
   }
   
   .flashcard {
-    @apply bg-white rounded-2xl shadow-lg p-6 md:p-8 transition-all duration-300 
-    border border-gray-200 hover:shadow-xl;
+    @apply rounded-2xl p-6 md:p-8 transition-all duration-300 
+    backdrop-blur-sm bg-gray-900/70 border border-gray-800 hover:border-gray-700 shadow-lg;
   }
 }
