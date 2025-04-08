@@ -19,7 +19,7 @@ const RecordButton: React.FC<RecordButtonProps> = ({
     <button
       onClick={onClick}
       disabled={disabled || isProcessing}
-      className={`speak-button w-16 h-16 md:w-20 md:h-20 ${
+      className={`speak-button w-16 h-16 md:w-20 md:h-20 transition-all ${
         isRecording 
           ? "bg-red-600 animate-pulse-gentle" 
           : "bg-red-600 hover:bg-red-700"

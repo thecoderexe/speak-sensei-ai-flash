@@ -40,7 +40,7 @@ const PronunciationFeedback: React.FC<PronunciationFeedbackProps> = ({
             <div className="w-8 h-8 border-4 border-gray-600 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : score ? (
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in">
             <RatingBar label="Pronunciation" score={score.pronunciation} />
             <RatingBar label="Nuance" score={score.nuance} />
             <RatingBar label="Naturalness" score={score.naturalness} />

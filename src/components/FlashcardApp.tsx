@@ -109,6 +109,7 @@ const FlashcardApp: React.FC = () => {
     
     setPronunciationScore(null);
     setIsRecording(false);
+    setShowTranslation(false);
   };
 
   const handlePlayCorrectPronunciation = async () => {
@@ -145,7 +146,7 @@ const FlashcardApp: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
-      <div className="flex justify-center mb-12">
+      <div className="flex justify-center mb-12 animate-fade-in">
         <LanguageSelector 
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
@@ -171,7 +172,7 @@ const FlashcardApp: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex flex-col items-center mb-10">
+          <div className="flex flex-col items-center mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <RecordButton
               isRecording={isRecording}
               isProcessing={isProcessing}
@@ -189,7 +190,7 @@ const FlashcardApp: React.FC = () => {
             isLoading={isProcessing}
           />
           
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-12 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Button
               onClick={handleNextFlashcard}
               className="bg-gray-800 hover:bg-gray-700 transition-colors flex items-center gap-2 px-8 py-6 rounded-full text-md"

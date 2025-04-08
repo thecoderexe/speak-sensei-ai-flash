@@ -13,13 +13,13 @@ const FlashcardDisplay: React.FC<FlashcardDisplayProps> = ({
   showTranslation,
 }) => {
   return (
-    <Card className="flashcard">
+    <Card className="flashcard animate-fade-in">
       <div className="text-center p-6 md:p-8">
         <h3 className="text-2xl md:text-4xl font-medium mb-6 text-gray-100">
           {flashcard.text}
         </h3>
         {showTranslation && flashcard.translation && (
-          <p className="text-gray-400 text-base md:text-lg italic mt-4">
+          <p className="text-gray-400 text-base md:text-lg italic mt-4 animate-fade-in">
             {flashcard.translation}
           </p>
         )}
