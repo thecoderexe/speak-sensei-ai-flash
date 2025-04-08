@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
@@ -24,10 +23,8 @@ const FlashcardApp: React.FC = () => {
   const [pronunciationScore, setPronunciationScore] = useState<PronunciationScore | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
-  // Get the current flashcard
   const currentFlashcard = flashcards[currentFlashcardIndex];
 
-  // Handle language change
   const handleLanguageChange = (languageCode: string) => {
     const newLanguage = languages.find(lang => lang.code === languageCode) || languages[0];
     setSelectedLanguage(newLanguage);
@@ -35,19 +32,15 @@ const FlashcardApp: React.FC = () => {
     setPronunciationScore(null);
   };
 
-  // Load flashcards when language changes
   useEffect(() => {
     const cards = getFlashcardsByLanguage(selectedLanguage.code);
     setFlashcards(cards);
   }, [selectedLanguage]);
 
-  // Handle recording button click
   const handleRecordButtonClick = async () => {
     if (isRecording) {
-      // Stop recording
       stopRecording(mediaRecorderRef.current, setIsRecording, handleAudioData);
     } else {
-      // Start recording
       const recorder = await startRecording(setIsRecording);
       mediaRecorderRef.current = recorder;
       setPronunciationScore(null);
@@ -62,14 +55,12 @@ const FlashcardApp: React.FC = () => {
     }
   };
 
-  // Handle audio data after recording stops
   const handleAudioData = async (audioBlob: Blob) => {
     if (!currentFlashcard) return;
     
     setIsProcessing(true);
     
     try {
-      // In a real app, we would send the audio to a server for processing
       const score = await analyzePronunciation(
         audioBlob, 
         currentFlashcard.text,
@@ -78,7 +69,6 @@ const FlashcardApp: React.FC = () => {
       
       setPronunciationScore(score);
       
-      // Show a toast based on the score
       if (score.overall >= 7) {
         toast({
           title: "Great pronunciation!",
@@ -110,21 +100,17 @@ const FlashcardApp: React.FC = () => {
     }
   };
 
-  // Move to the next flashcard
   const handleNextFlashcard = () => {
     if (currentFlashcardIndex < flashcards.length - 1) {
       setCurrentFlashcardIndex(currentFlashcardIndex + 1);
     } else {
-      // Cycle back to the beginning
       setCurrentFlashcardIndex(0);
     }
     
-    // Reset states
     setPronunciationScore(null);
     setIsRecording(false);
   };
 
-  // Play correct pronunciation
   const handlePlayCorrectPronunciation = async () => {
     if (!currentFlashcard) return;
     
@@ -134,17 +120,13 @@ const FlashcardApp: React.FC = () => {
         selectedLanguage.code
       );
       
-      // In a demo, this won't work because we don't have real audio URLs
-      // In a real app, we would play the audio from the URL
       toast({
         title: "Playing pronunciation...",
         description: "This is a demo. In a real app, the correct pronunciation would play.",
         variant: "default",
       });
       
-      // Simulate audio playback for demo
       setTimeout(() => {
-        // In a real app, this would be: playAudio(audioUrl);
         console.log("Playing audio:", audioUrl);
       }, 500);
     } catch (error) {
@@ -157,15 +139,14 @@ const FlashcardApp: React.FC = () => {
     }
   };
 
-  // Toggle translation visibility
   const toggleTranslation = () => {
     setShowTranslation(!showTranslation);
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <header className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-speak-blue to-purple-600">
+    <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
+      <header className="mb-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-900">
           Speak Sensei
         </h1>
         <p className="text-center text-gray-600 mt-2">
@@ -173,7 +154,7 @@ const FlashcardApp: React.FC = () => {
         </p>
       </header>
       
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-12">
         <LanguageSelector 
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
@@ -182,32 +163,32 @@ const FlashcardApp: React.FC = () => {
       
       {currentFlashcard && (
         <>
-          <div className="mb-8">
+          <div className="mb-10">
             <FlashcardDisplay 
               flashcard={currentFlashcard}
               showTranslation={showTranslation}
             />
             
-            <div className="flex justify-center mt-2">
+            <div className="flex justify-center mt-3">
               <Button
                 variant="ghost"
                 onClick={toggleTranslation}
-                className="text-sm text-gray-500 hover:text-speak-blue"
+                className="text-sm text-gray-500 hover:text-gray-900"
               >
                 {showTranslation ? "Hide translation" : "Show translation"}
               </Button>
             </div>
           </div>
           
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mb-10">
             <RecordButton
               isRecording={isRecording}
               isProcessing={isProcessing}
               onClick={handleRecordButtonClick}
               disabled={!currentFlashcard}
             />
-            <p className="text-sm text-gray-500 mt-2">
-              {isRecording ? "Stop recording" : "Tap to speak"}
+            <p className="text-sm text-gray-500 mt-3">
+              {isRecording ? "Stop recording" : "Click to speak"}
             </p>
           </div>
           
@@ -217,10 +198,10 @@ const FlashcardApp: React.FC = () => {
             isLoading={isProcessing}
           />
           
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-12">
             <Button
               onClick={handleNextFlashcard}
-              className="bg-speak-blue hover:bg-blue-600 flex items-center gap-2"
+              className="bg-gray-900 hover:bg-black transition-colors flex items-center gap-2 px-8 py-6 rounded-full text-md"
             >
               Next <ArrowRight className="w-4 h-4" />
             </Button>

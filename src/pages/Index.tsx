@@ -4,7 +4,7 @@ import FlashcardApp from "@/components/FlashcardApp";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50">
+    <div className="min-h-screen bg-white">
       <FlashcardApp />
     </div>
   );

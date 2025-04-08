@@ -21,8 +21,8 @@ const RecordButton: React.FC<RecordButtonProps> = ({
       disabled={disabled || isProcessing}
       className={`speak-button w-16 h-16 md:w-20 md:h-20 ${
         isRecording 
-          ? "bg-speak-red animate-pulse-gentle" 
-          : "bg-speak-red hover:bg-red-600"
+          ? "bg-red-500 animate-pulse-gentle" 
+          : "bg-red-500 hover:bg-red-600"
       } ${disabled || isProcessing ? "opacity-70 cursor-not-allowed" : ""}`}
       aria-label={isRecording ? "Stop recording" : "Start recording"}
     >

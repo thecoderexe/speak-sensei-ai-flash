@@ -20,12 +20,12 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   onLanguageChange,
 }) => {
   return (
-    <div className="mb-6">
+    <div>
       <Select
         value={selectedLanguage.code}
         onValueChange={onLanguageChange}
       >
-        <SelectTrigger className="w-full md:w-[220px] bg-white">
+        <SelectTrigger className="w-full md:w-[240px] border border-gray-300 bg-white">
           <SelectValue placeholder="Select a language">
             <div className="flex items-center">
               <span className="mr-2 text-xl">{selectedLanguage.flag}</span>
@@ -33,9 +33,9 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
             </div>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-white border border-gray-200">
           {languages.map((language) => (
-            <SelectItem key={language.code} value={language.code}>
+            <SelectItem key={language.code} value={language.code} className="hover:bg-gray-50">
               <div className="flex items-center">
                 <span className="mr-2 text-xl">{language.flag}</span>
                 <span>{language.name}</span>

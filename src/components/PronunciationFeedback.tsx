@@ -20,15 +20,15 @@ const PronunciationFeedback: React.FC<PronunciationFeedbackProps> = ({
   if (!score && !isLoading) return null;
 
   return (
-    <Card className="mt-8 p-6 bg-white animate-slide-up">
+    <Card className="mt-8 p-6 bg-white border border-gray-100 shadow-sm animate-slide-up">
       <div className="flex flex-col">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold">Pronunciation Feedback</h3>
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-xl font-medium text-gray-800">Pronunciation Analysis</h3>
           <Button 
             variant="outline" 
             onClick={onPlayCorrectPronunciation}
             disabled={isLoading}
-            className="flex items-center gap-2 text-speak-blue hover:text-speak-blue"
+            className="flex items-center gap-2 text-gray-700 border-gray-300 hover:bg-gray-50 hover:text-black"
           >
             <Volume2 className="w-4 h-4" />
             <span>Listen</span>
@@ -36,19 +36,19 @@ const PronunciationFeedback: React.FC<PronunciationFeedbackProps> = ({
         </div>
         
         {isLoading ? (
-          <div className="flex justify-center items-center py-4">
-            <div className="w-8 h-8 border-4 border-speak-blue border-t-transparent rounded-full animate-spin"></div>
+          <div className="flex justify-center items-center py-6">
+            <div className="w-8 h-8 border-4 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : score ? (
-          <div className="space-y-2">
+          <div className="space-y-4">
             <RatingBar label="Pronunciation" score={score.pronunciation} />
             <RatingBar label="Nuance" score={score.nuance} />
             <RatingBar label="Naturalness" score={score.naturalness} />
             <RatingBar label="Confidence" score={score.confidence} />
             
-            <div className="mt-6 pt-4 border-t">
+            <div className="mt-8 pt-4 border-t border-gray-100">
               <div className="flex justify-between items-center">
-                <span className="text-lg font-bold">Overall Score</span>
+                <span className="text-lg font-medium text-gray-800">Overall Score</span>
                 <span className={`text-2xl font-bold ${getScoreColor(score.overall)}`}>
                   {score.overall}/10
                 </span>
@@ -62,9 +62,9 @@ const PronunciationFeedback: React.FC<PronunciationFeedbackProps> = ({
 };
 
 const getScoreColor = (score: number): string => {
-  if (score < 4) return "text-speak-red";
-  if (score < 7) return "text-speak-yellow";
-  return "text-speak-green";
+  if (score < 4) return "text-red-500";
+  if (score < 7) return "text-amber-500";
+  return "text-green-500";
 };
 
 export default PronunciationFeedback;
